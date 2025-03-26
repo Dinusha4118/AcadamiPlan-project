@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import ConflictResolution from './components/ConflictResolution';
+import RealTimeNotifications from './components/RealTimeNotifications';
+import emailjs from 'emailjs-com';
+emailjs.init('7LqSR-1n9ia2u4Hau');  // Initialize with your user ID
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/conflict-resolution" element={<ConflictResolution />} />
+        <Route path="/real-time-notifications" element={<RealTimeNotifications />} />
+        {/* Optional: Add a 404 page for unmatched routes */}
+        <Route path="*" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 
