@@ -9,10 +9,17 @@ import conflictRoutes from './routes/conflictRoutes.js';
 dotenv.config();
 connectDB();
 
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+
 const app = express();
 const server = createServer(app);
 const io = setupWebSocket(server);
 
+
+app.listen(port)
 app.use(express.json());
 app.use(cors());
 
